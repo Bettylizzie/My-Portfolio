@@ -36,7 +36,7 @@ const downloadCv = document.getElementById('downloadCv');
 downloadCv.addEventListener('click', (e) => {
     e.preventDefault();
     const link = document.createElement('a');
-    link.href = 'file:///C:/Users/Betty%20Njuguna/Downloads/BETH%20NYAMBURA%20CURRICULUM%20VITAE.pdf';
+    link.href = 'https://drive.google.com/file/d/1Kbkp0g1PdHs2OMMjftwlb1Mt4AuxX_kI/view?usp=sharing';
     link.download = 'Beth_Njuguna_CV.pdf';
     document.body.appendChild(link);
     link.click();
