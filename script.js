@@ -9,7 +9,7 @@ mobileMenuBtn.addEventListener('click', () => {
         : '<i class="fas fa-bars"></i>';
 });
 
-// Smooth Scrolling for Anchor Links
+// Smooth Scrolling for Anchor Links 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -23,7 +23,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth'
             });
             
-            // Close mobile menu if open
             if (mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
@@ -36,18 +35,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const downloadCv = document.getElementById('downloadCv');
 downloadCv.addEventListener('click', (e) => {
     e.preventDefault();
-    
-    // Create a temporary link element
     const link = document.createElement('a');
     link.href = 'file:///C:/Users/Betty%20Njuguna/Downloads/BETH%20NYAMBURA%20CURRICULUM%20VITAE.pdf';
     link.download = 'Beth_Njuguna_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
 });
 
-// Contact Form Submission
+// Contact Form Submission (UPDATED ONLY EmailJS INITIALIZATION)
+emailjs.init('SGwmq8sFRyK3KCREy'); // Replace with your real public key (already looks fine)
+
 const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -58,20 +56,12 @@ contactForm.addEventListener('submit', (e) => {
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
     
-    // First show the confirmation to user (existing functionality)
+    // Existing alert
     alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon.`);
-    
-    // Reset the form (existing functionality)
     contactForm.reset();
     
-    // NEW: Send email using EmailJS (added functionality)
-    // Step 1: Add this script to your HTML head:
-    // <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
-    // Step 2: Initialize with your user ID (replace 'YOUR_USER_ID')
-    emailjs.init('YOUR_USER_ID');
-    
-    // Send the email
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+    // ONLY UPDATED SECTION: EmailJS implementation
+    emailjs.send('Betty94', 'template_dc0i4ty', {
         from_name: name,
         from_email: email,
         subject: subject,
@@ -82,13 +72,12 @@ contactForm.addEventListener('submit', (e) => {
         },
         (error) => {
             console.log('Failed to send email:', error);
-            // Optional: Show error message to user
-            // alert('Failed to send message. Please try again later.');
         }
     );
 });
 
-// Animate skill bars on hover
+
+// Animate skill bars 
 document.querySelectorAll('.skill-category').forEach(category => {
     category.addEventListener('mouseenter', () => {
         const skillBars = category.querySelectorAll('.skill-progress');
@@ -103,7 +92,7 @@ document.querySelectorAll('.skill-category').forEach(category => {
     });
 });
 
-// Optional: Reset animation when leaving the category
+// Optional reset 
 document.querySelectorAll('.skill-category').forEach(category => {
     category.addEventListener('mouseleave', () => {
         const skillBars = category.querySelectorAll('.skill-progress');
